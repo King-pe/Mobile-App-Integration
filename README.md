@@ -1,61 +1,26 @@
 # PeterPay Mobile Integration Guide
 
-Welcome to the **PeterPay Mobile Integration Guide**. This repository provides information and implementation details for integrating PeterPay into your mobile applications (Android & iOS).
+Karibu kwenye mwongozo wa kuunganisha PeterPay kwenye Mobile Apps (Android & iOS).
 
-## Overview
+## Utangulizi
+PeterPay ni mfumo rahisi wa malipo unaokuwezesha kupokea pesa kupitia Mobile Money (M-Pesa, Tigo Pesa, Airtel Money, n.k.) moja kwa moja kwenye application yako.
 
-PeterPay allows developers to easily process mobile money payments within their applications. This guide will walk you through the process of setting up and handling payments.
+## Hatua za Kufuata
 
-## Prerequisites
+### 1. Pata API Key
+Jisajili na upate API Key yako kutoka [www.peterpay.link](https://www.peterpay.link).
 
-1. **PeterPay Account**: You'll need a merchant account on [PeterPay](https://www.peterpay.link).
-2. **API Key**: Found in your PeterPay dashboard.
-3. **Backend Support**: It's highly recommended to use a backend server to handle sensitive API keys.
+### 2. Integration (API Endpoints)
+Tumia endpoints zifuatazo kuunganisha:
 
-## Implementation Steps
+- **Kuanzisha Malipo (Create Order):**
+  `POST https://www.peterpay.link/api/v1/create_order`
+  
+- **Kukagua Hali ya Malipo (Check Status):**
+  `POST https://www.peterpay.link/api/v1/order_status`
 
-### 1. initiating a Payment
-To initiate a payment, send a POST request to the PeterPay API.
-
-**Endpoint:** `https://www.peterget.com/api/v1/create_order`
-
-**Headers:**
-- `X-API-KEY`: Your unique API Key
-- `Content-Type`: `application/json`
-
-**Body Example:**
-```json
-{
-    "amount": 1000,
-    "buyer_phone": "2557XXXXXXXX",
-    "buyer_name": "John Doe",
-    "buyer_email": "john@example.com"
-}
-```
-
-### 2. verifying Payment Status
-Once the payment is initiated, you can check its status using the `order_id` received in the response.
-
-**Endpoint:** `https://www.peterpay.link/api/v1/order_status`
-
-**Body Example:**
-```json
-{
-    "order_id": "YOUR_ORDER_ID"
-}
-```
-
-### 3. handling Webhooks
-Configure a **Webhook URL** in your PeterPay dashboard to receive real-mtime updates on payment status. This is the most reliable way to confirm successful transactions.
-
-## Best Practices
-- **Security**: Never store your API keys directly in the mobile application's code. Use a backend service to communicate with PeterPay.
-- **User Experience**: Show a clearly marked payment processing screen and confirmation once the transaction is completed.
-
-## Support
-If you have any questions or need further assistance, please reach out via:
-- Website: [https://www.peterpay.link](https://www.peterpay.link)
-- Email: support@peterpay.link
+### 3. Usalama (Security)
+Hakikisha unatumia backend server yako kufanya communication na PeterPay API ili kulinda **API Key** yako isionekane na watumiaji wa mobile app.
 
 ---
-*Developed by [Peter Joram](https://www.peterpay.link)*
+**Developed by [Peter Joram](https://www.peterpay.link)**
