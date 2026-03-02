@@ -85,4 +85,4 @@ client.newCall(request).enqueue(new Callback() {
 ```
 
 ---
-**Developed by [Manus AI]**
+**Developed by [Peter Joram](https://www.peterpay.link)**
